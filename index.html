@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulador de Máquina de Turing - Validación de Tipo de Usuario</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Simulador de Máquina de Turing</h1>
+            <p class="subtitle">Validación de Tipo de Usuario (admin | guest | user)</p>
+        </header>
+
+        <div class="input-section">
+            <label for="inputString">Ingresa el tipo de usuario a validar:</label>
+            <div class="input-group">
+                <input type="text" id="inputString" placeholder="Ej: admin, guest o user" maxlength="20" autocomplete="off">
+                <button id="btnLoad" class="btn btn-primary">Cargar</button>
+            </div>
+        </div>
+
+        <div class="machine-section">
+            <div class="state-display">
+                <h3>Estado Actual:</h3>
+                <div id="stateDisplay" class="state-badge">q0</div>
+            </div>
+
+            <div class="tape-container">
+                <h3>Cinta de la Máquina de Turing</h3>
+                <div id="tapeContainer" class="tape"></div>
+            </div>
+
+            <div class="controls">
+                <button id="btnStep" class="btn btn-secondary" disabled>Paso</button>
+                <button id="btnRun" class="btn btn-secondary" disabled>Ejecutar</button>
+                <button id="btnReset" class="btn btn-warning" disabled>Reiniciar</button>
+            </div>
+        </div>
+
+        <div class="result-section">
+            <h3>Resultado:</h3>
+            <div id="resultDisplay" class="result-box">
+                <p>Esperando entrada...</p>
+            </div>
+        </div>
+
+        <div class="info-section">
+            <h3>Información</h3>
+            <ul>
+                <li><strong>Regex:</strong> <code>^(admin|guest|user)$</code></li>
+                <li><strong>Formato válido:</strong> Exactamente "admin", "guest" o "user"</li>
+                <li><strong>Ejemplos válidos:</strong> admin, guest, user</li>
+                <li><strong>Ejemplos inválidos:</strong> admin123, guest_user, usr, adm, gues</li>
+            </ul>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

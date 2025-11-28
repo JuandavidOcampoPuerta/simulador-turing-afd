@@ -1,0 +1,370 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    padding: 20px;
+    color: #333;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+    padding: 30px;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 3px solid #667eea;
+}
+
+header h1 {
+    color: #667eea;
+    font-size: 2.5em;
+    margin-bottom: 10px;
+}
+
+.subtitle {
+    color: #666;
+    font-size: 1.1em;
+}
+
+/* --- Input Section --- */
+
+.input-section {
+    background: #f8f9fa;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.input-group {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.input-group input {
+    flex: 1;
+}
+
+.input-section label {
+    font-weight: bold;
+    color: #333;
+}
+
+.input-section input {
+    padding: 12px;
+    border: 2px solid #ddd;
+    border-radius: 5px;
+    font-size: 1em;
+    transition: border-color 0.3s;
+}
+
+.input-section input:focus {
+    outline: none;
+    border-color: #667eea;
+}
+
+/* --- Buttons --- */
+
+.btn {
+    padding: 12px 24px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1em;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-weight: bold;
+    text-transform: uppercase;
+    min-width: 120px; /* Asegurar un tamaño uniforme */
+}
+
+.btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.btn-primary {
+    background: #667eea;
+    color: white;
+}
+
+.btn-primary:hover:not(:disabled) {
+    background: #5568d3;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+}
+
+.btn-secondary {
+    background: #48bb78;
+    color: white;
+}
+
+.btn-secondary:hover:not(:disabled) {
+    background: #38a169;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(72, 187, 120, 0.4);
+}
+
+.btn-warning {
+    background: #ed8936;
+    color: white;
+}
+
+.btn-warning:hover:not(:disabled) {
+    background: #dd6b20;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(237, 137, 54, 0.4);
+}
+
+/* --- Machine Components --- */
+
+.machine-section {
+    margin-bottom: 30px;
+}
+
+.state-display {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.state-display h3 {
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.state-badge {
+    display: inline-block;
+    padding: 10px 20px;
+    background: #667eea;
+    color: white;
+    border-radius: 25px;
+    font-size: 1.2em;
+    font-weight: bold;
+    min-width: 150px;
+}
+
+.state-badge.accept {
+    background: #48bb78;
+}
+
+.state-badge.reject {
+    background: #f56565;
+}
+
+/* --- Cinta --- */
+
+.tape-container {
+    background: #f8f9fa;
+    padding: 30px 10px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.tape-container h3 {
+    margin-bottom: 20px;
+    color: #333;
+    text-align: center;
+}
+
+.tape {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 5px;
+    min-height: 80px;
+    align-items: center;
+    padding: 20px 10px;
+    background: white;
+    border: 3px solid #667eea;
+    border-radius: 10px;
+}
+
+.tape-cell {
+    /* Base style for a single cell */
+    display: inline-block;
+    min-width: 50px;
+    height: 50px;
+    border: 2px solid #667eea;
+    border-radius: 5px;
+    margin: 5px;
+    padding: 10px;
+    text-align: center;
+    font-size: 1.2em;
+    font-weight: bold;
+    background: white;
+    transition: all 0.3s;
+    vertical-align: middle;
+    line-height: 30px;
+    position: relative; /* Importante para posicionar el cabezal */
+}
+
+.tape-cell.tape-blank {
+    background: #e2e8f0;
+    color: #999;
+    font-style: italic;
+}
+
+.tape-cell.tape-head {
+    background: #ffd700;
+    border-color: #ff8c00;
+    transform: scale(1.1);
+    box-shadow: 0 0 15px rgba(255, 215, 0, 0.6);
+}
+
+/* Estilo Mejorado: Indicador de Cabezal (flecha) */
+.tape-cell.tape-head::before {
+    content: '▼'; /* Símbolo de cabezal */
+    position: absolute;
+    top: -25px; 
+    left: 50%;
+    transform: translateX(-50%);
+    color: #ff8c00;
+    font-size: 1.5em;
+    font-weight: bold;
+    line-height: 1;
+    z-index: 10;
+}
+
+.controls {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+/* --- Results --- */
+
+.result-section {
+    background: #f8f9fa;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 30px;
+}
+
+.result-section h3 {
+    margin-bottom: 15px;
+    color: #333;
+}
+
+.result {
+    padding: 20px;
+    border-radius: 5px;
+    font-size: 1.2em;
+    text-align: center;
+    min-height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+}
+
+.result.running {
+    background: #e2e8f0;
+    color: #666;
+    border: 2px solid #ddd;
+}
+
+.result.accepted {
+    background: #c6f6d5;
+    color: #22543d;
+    border: 2px solid #48bb78;
+}
+
+.result.rejected {
+    background: #fed7d7;
+    color: #742a2a;
+    border: 2px solid #f56565;
+}
+
+.result.info {
+    background: #bee3f8;
+    color: #2c5282;
+    border: 2px solid #4299e1;
+}
+
+/* --- Info Section --- */
+
+.info-section {
+    background: #f8f9fa;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.info-section h3 {
+    margin-bottom: 15px;
+    color: #333;
+}
+
+.info-section ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.info-section li {
+    padding: 8px 0;
+    border-bottom: 1px solid #ddd;
+}
+
+.info-section li:last-child {
+    border-bottom: none;
+}
+
+.info-section code {
+    background: #e2e8f0;
+    padding: 2px 6px;
+    border-radius: 3px;
+    font-family: 'Courier New', monospace;
+    color: #667eea;
+}
+
+/* --- Responsive Design --- */
+
+@media (max-width: 768px) {
+    .container {
+        padding: 15px;
+    }
+
+    header h1 {
+        font-size: 1.8em;
+    }
+
+    .tape {
+        padding: 10px;
+    }
+
+    .tape-cell {
+        min-width: 40px;
+        height: 40px;
+        font-size: 1em;
+        line-height: 20px;
+    }
+
+    .tape-cell.tape-head::before {
+        top: -18px; /* Ajuste para móviles */
+        font-size: 1.2em;
+    }
+
+    .controls {
+        flex-direction: column;
+    }
+
+    .btn {
+        width: 100%;
+    }
+}
+
